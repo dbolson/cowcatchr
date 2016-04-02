@@ -1,52 +1,72 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
-const CutsTable = ({ cutTypes }) => (
+const CutsTable = ({ cutTypes, cuts, onSave }) => (
   <div className="cuts-table">
-    <CutsInput cutTypes={cutTypes}/>
-    <CutsList />
+    <CutsInput cutTypes={cutTypes} onSave={onSave}/>
+    <CutsList cuts={cuts} />
   </div>
 )
 
-const CutsInput = ({ cutTypes }) => (
-  <div className="cuts-input">
-    <div className="row">
-      <select name="cuts_type">
-        <option value="0">type</option>
-        {cutTypes.map(type =>
-          <option key={type.id} value={type.id}>{type.name}</option>
-        )}
-      </select>
-      <input className="cuts-name" type="text" name="name" placeholder="name" />
-      <input className="cuts-weight" type="text" name="weight" placeholder="weight" />
-      <input className="cuts-save" type="button" value="Save" />
-    </div>
-  </div>
-)
+const CutsInput = React.createClass({
+  handleOnSubmit: function (e) {
+    e.preventDefault()
 
-const CutsList = () => (
+    const formData = {
+      type: this.refs.type.value,
+      name: this.refs.name.value,
+      weight: this.refs.weight.value
+    }
+
+    this.clearForm()
+    this.props.onSave(formData)
+  },
+
+  clearForm: function () {
+    this.refs.type.value = 0
+    this.refs.name.value = null
+    this.refs.weight.value = null
+  },
+
+  render: function () {
+    return (
+      <div className="cuts-input">
+        <div className="row">
+          <form onSubmit={this.handleOnSubmit}>
+            <select name="cuts_type" ref="type">
+              <option value="0">type</option>
+              {this.props.cutTypes.map(type =>
+                <option key={type.id} value={type.id}>{type.name}</option>
+              )}
+            </select>
+            <input className="cuts-name" ref="name" type="text" name="name" placeholder="name" />
+            <input className="cuts-weight" ref="weight" type="text" name="weight" placeholder="weight" />
+            <input className="cuts-save" type="submit" value="Save" />
+          </form>
+        </div>
+      </div>
+    )
+  }
+})
+
+const CutsList = ({ cuts }) => (
   <div className="cuts-list">
-    <div className="row">
-      <span className="type">ground</span>
-      <span className="name">ground</span>
-      <span className="weight">1.0</span>
-      <input type="button" name="delete" value="delete" />
-    </div>
-    <div className="row">
-      <span className="type">steak</span>
-      <span className="name">new york strip</span>
-      <span className="weight">2.7</span>
-      <input type="button" name="delete" value="delete" />
-    </div>
-    <div className="row">
-      <span className="type">steak</span>
-      <span className="name">ribeye</span>
-      <span className="weight">1.5</span>
-      <input type="button" name="delete" value="delete" />
-    </div>
+    {cuts.map(cut =>
+      <Cut key={cut.id} cut={cut} />
+    )}
   </div>
 )
 
-const CutsSummary = () => (
+const Cut = ({ cut }) => (
+  <div className="row" key={cut.id}>
+    <span className="type">{cut.type}</span>
+    <span className="name">{cut.name}</span>
+    <span className="weight">{cut.weight}</span>
+    <input type="button" name="delete" value="delete" />
+  </div>
+)
+
+const CutsSummary = ({ cuts }) => (
   <div className="cuts-summary">
     <h1>Summary</h1>
     <div>
@@ -55,34 +75,25 @@ const CutsSummary = () => (
         <span className="weight">Weight</span>
         <span className="percentage">%</span>
       </div>
-      <div className="row">
-        <span className="name">steaks</span>
-        <span className="weight">4.2</span>
-        <span className="percentage">81</span>
-      </div>
-      <div className="row">
-        <span className="name">roasts</span>
-        <span className="weight">0</span>
-        <span className="percentage">0</span>
-      </div>
-      <div className="row">
-        <span className="name">ground</span>
-        <span className="weight">1.0</span>
-        <span className="percentage">19</span>
-      </div>
-      <div className="row">
-        <span className="name">misc.</span>
-        <span className="weight">0</span>
-        <span className="percentage">0</span>
-      </div>
+      {cuts.map(cut =>
+        <CutSummaryRow key={cut.id} cut={cut} />
+      )}
     </div>
   </div>
 )
 
-const App = ({ cutTypes }) => (
+const CutSummaryRow = ({ cut }) => (
+  <div className="row">
+    <span className="name">{cut.name}</span>
+    <span className="weight">{cut.weight}</span>
+    <span className="percentage">{cut.percentage}</span>
+  </div>
+)
+
+const App = ({ cutTypes, cuts, summarizedCuts, onSave }) => (
   <div className="app">
-    <CutsTable cutTypes={cutTypes} />
-    <CutsSummary />
+    <CutsTable cutTypes={cutTypes} cuts={cuts} onSave={onSave} />
+    <CutsSummary cuts={summarizedCuts} />
   </div>
 )
 
