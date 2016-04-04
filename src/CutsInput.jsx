@@ -1,5 +1,9 @@
 import React from 'react'
 
+const isNumeric = (n) => {
+  return !isNaN(parseFloat(n)) && isFinite(n)
+}
+
 const CutsInput = React.createClass({
   handleOnSubmit: function (e) {
     e.preventDefault()
@@ -10,8 +14,10 @@ const CutsInput = React.createClass({
       weight: this.refs.weight.value
     }
 
-    this.clearForm()
-    this.props.onSave(formData)
+    if (formData.type !== '0' && formData.name !== '' && isNumeric(formData.weight)) {
+      this.clearForm()
+      this.props.onSave(formData)
+    }
   },
 
   clearForm: function () {
