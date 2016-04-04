@@ -5,10 +5,10 @@ import {CutsTable} from './CutsTable'
 import {CutsSummary} from './CutsSummary'
 import {addCut} from './actions'
 
-const App = ({ cutTypes, cuts, summarizedCuts, onSave }) => (
+const App = ({ cutTypes, cuts, onSave }) => (
   <div className="app">
     <CutsTable cutTypes={cutTypes} cuts={cuts} onSave={onSave} />
-    <CutsSummary cuts={summarizedCuts} />
+    <CutsSummary cutTypes={cutTypes} cuts={cuts} />
   </div>
 )
 
@@ -35,20 +35,10 @@ const mappedCuts = ({ cuts, cutTypes }) => {
   return mappedCuts
 }
 
-const summarizedCuts = (state) => {
-  return [
-    { id: 1, name: 'steaks', weight: 4.2, percentage: 81 },
-    { id: 2, name: 'roasts', weight: 0, percentage: 0 },
-    { id: 3, name: 'ground', weight: 1.0, percentage: 19 },
-    { id: 4, name: 'misc.', weight: 0, percentage: 0 },
-  ]
-}
-
 const mapStateToProps = (state) => {
   return {
     cutTypes: mappedCutTypes(state.cutTypes),
     cuts: mappedCuts(state),
-    summarizedCuts: summarizedCuts(state)
   }
 }
 
