@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: [
@@ -15,9 +16,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
+        loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']
       }
     ]
+  },
+  postcss: function () {
+    return [autoprefixer]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
