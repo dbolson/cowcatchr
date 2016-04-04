@@ -6,6 +6,7 @@ import reducer from './reducer';
 import {App, AppContainer} from './App'
 
 require('normalize-css')
+require('./style.scss')
 
 const store = createStore(reducer);
 const state = {
