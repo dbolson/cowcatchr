@@ -11,7 +11,6 @@ describe('reducer', () => {
         weight: 1,
       }
     }
-
     const result = reducer(undefined, {
       type: 'ADD_CUT',
       cut: {
