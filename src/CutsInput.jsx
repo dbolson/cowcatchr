@@ -15,6 +15,7 @@ const CutsInput = React.createClass({
     }
 
     if (formData.type !== '0' && formData.name !== '' && isNumeric(formData.weight)) {
+      formData.weight = parseFloat(formData.weight)
       this.clearForm()
       this.props.onSave(formData)
     }

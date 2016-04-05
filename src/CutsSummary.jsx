@@ -3,13 +3,14 @@ import {CutSummaryRow} from './CutSummaryRow'
 
 const summarizedCuts = ({ cuts, cutTypes }) => {
   const weights = cutWeights(cuts, cutTypes)
+  const weightTotal = totalWeight(weights)
 
   return Object.keys(weights).map((key, i) => {
     return {
       id: i + 1,
       name: key,
       weight: weights[key],
-      percentage: Math.round((weights[key] / totalWeight(weights)) * 100),
+      percentage: Math.round((weights[key] / weightTotal) * 100),
     }
   })
 }
