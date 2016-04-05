@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
+var stylelint = require("stylelint");
 
 module.exports = {
   entry: [
@@ -16,12 +17,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']
+        loaders: ['style', 'css?sourceMap', 'sass?sourceMap', 'postcss']
       }
     ]
   },
   postcss: function () {
-    return [autoprefixer]
+    return [stylelint, autoprefixer]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
