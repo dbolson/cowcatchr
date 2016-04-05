@@ -11,10 +11,10 @@ describe('summarizedCuts', () => {
         { id: 4, name: 'misc'   },
       ],
       cuts: [
-        { id: 1, type: 3, name: 'ground',         weight: 1.0 },
-        { id: 2, type: 1, name: 'new york strip', weight: 2.7 },
-        { id: 3, type: 1, name: 'ribeye',         weight: 1.5 },
-        { id: 1, type: 3, name: 'ground',         weight: 1.0 },
+        { id: 1, type: 'ground', name: 'ground',         weight: 1.0 },
+        { id: 2, type: 'steak',  name: 'new york strip', weight: 2.7 },
+        { id: 3, type: 'steak',  name: 'ribeye',         weight: 1.5 },
+        { id: 1, type: 'ground', name: 'ground',         weight: 1.0 },
       ],
     }
 
