@@ -1,0 +1,24 @@
+$border-color: #000;
+
+.app {
+  padding: 30px;
+}
+
+.cuts-table {
+  border: 1px $border-color solid;
+  margin-right: 30px;
+  float: left;
+}
+
+.cuts-summary {
+  border: 1px $border-color solid;
+  float: left;
+}
+
+.row {
+  padding: 5px;
+}
+
+span {
+  margin-right: 10px;
+}

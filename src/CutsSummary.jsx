@@ -42,10 +42,10 @@ const CutsSummary = ({ cuts, cutTypes }) => (
   <div className="cuts-summary">
     <h1>Summary</h1>
     <div>
-      <div className="row-header">
-        <span className="name">Type</span>
-        <span className="weight">Weight</span>
-        <span className="percentage">%</span>
+      <div className="row">
+        <span className="cut-name">Type</span>
+        <span className="cut-weight">Weight</span>
+        <span className="cut-percentage">%</span>
       </div>
       {summarizedCuts({ cuts, cutTypes }).map(cut =>
         <CutSummaryRow key={cut.id} cut={cut} />
