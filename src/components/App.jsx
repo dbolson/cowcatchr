@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux';
 import {CutsTable} from './CutsTable'
 import {CutsSummary} from './CutsSummary'
-import {addCut} from './actions'
+import {addCut} from '../actions'
 
 const App = ({ cutTypes, cuts, onSave }) => (
   <div className="app">

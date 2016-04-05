@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {summarizedCuts} from '../src/CutsSummary'
+import {summarizedCuts} from '../../src/components/CutsSummary'
 
 describe('summarizedCuts', () => {
   it('summarizes the cuts', () => {
