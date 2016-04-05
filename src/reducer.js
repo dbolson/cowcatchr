@@ -5,11 +5,7 @@ const initialState = {
     3: { id: 3, name: 'ground' },
     4: { id: 4, name: 'misc' },
   },
-  cuts: {
-    1: { id: 1, type: 3, name: 'ground', weight: 1.0 },
-    2: { id: 2, type: 1, name: 'new york strip', weight: 2.7 },
-    3: { id: 3, type: 1, name: 'ribeye', weight: 1.5 },
-  },
+  cuts: {}
 }
 
 const addedCuts = (cut, cuts) => {
