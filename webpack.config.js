@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
-var stylelint = require("stylelint");
+var stylelint = require('stylelint');
 
 module.exports = {
   entry: [
@@ -13,7 +13,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'react-hot!babel'
+        loaders: ['react-hot', 'babel', 'eslint']
       },
       {
         test: /\.scss$/,

@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {connect} from 'react-redux';
 import {CutsTable} from './CutsTable'
 import {CutsSummary} from './CutsSummary'
