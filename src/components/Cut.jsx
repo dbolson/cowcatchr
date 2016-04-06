@@ -5,7 +5,7 @@ const Cut = ({ cut }) => (
     <span className="cut-type">{cut.type}</span>
     <span className="cut-name">{cut.name}</span>
     <span className="cut-weight">{cut.weight}</span>
-    <input type="button" name="delete" value="delete" />
+    <input type="button" name="delete" value="Delete" />
   </div>
 )
 
