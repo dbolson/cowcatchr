@@ -17,4 +17,14 @@ describe('actions', () => {
 
     assert.deepEqual(result, expected)
   })
+
+  it('creates an action to delete a cut ', () => {
+    const expected = {
+      type: 'DELETE_CUT',
+      id: 1,
+    }
+    const result = actions.deleteCut(1)
+
+    assert.deepEqual(result, expected)
+  })
 })

@@ -11,5 +11,9 @@ export function addCut(cut) {
   }
 }
 
-export function deleteCut() {
+export function deleteCut(id) {
+  return {
+    type: 'DELETE_CUT',
+    id,
+  }
 }

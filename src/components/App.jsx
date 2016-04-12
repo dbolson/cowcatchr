@@ -2,11 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux';
 import {CutsTable} from './CutsTable'
 import {CutsSummary} from './CutsSummary'
-import {addCut} from '../actions'
+import {addCut, deleteCut} from '../actions'
 
-const App = ({ cutTypes, cuts, onSave }) => (
+const App = ({ cutTypes, cuts, onSave, onDelete }) => (
   <div className="app">
-    <CutsTable cutTypes={cutTypes} cuts={cuts} onSave={onSave} />
+    <CutsTable cutTypes={cutTypes} cuts={cuts} onSave={onSave} onDelete={onDelete} />
     <CutsSummary cutTypes={cutTypes} cuts={cuts} />
   </div>
 )
@@ -43,7 +43,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSave: (cut) => dispatch(addCut(cut))
+    onSave: (cut) => dispatch(addCut(cut)),
+    onDelete: (cut) => dispatch(deleteCut(cut))
   }
 }
 
