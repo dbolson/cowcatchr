@@ -21,6 +21,19 @@ const addedCuts = (cut, cuts) => {
   })
 }
 
+const deletedCuts = (id, cuts) => {
+  let updatedCuts = {}
+
+  Object.keys(cuts).forEach((cut) => {
+    const cutId = parseInt(cut)
+    if (cutId !== id) {
+      updatedCuts[cutId] = cuts[cut]
+    }
+  })
+
+  return Object.assign({}, updatedCuts)
+}
+
 export default function(state=initialState, action) {
   switch (action.type) {
     case 'START_ORDER':
@@ -32,7 +45,9 @@ export default function(state=initialState, action) {
         cuts: addedCuts(action.cut, state.cuts)
       })
     case 'DELETE_CUT':
-      return state
+      return Object.assign({}, state, {
+        cuts: deletedCuts(action.id, state.cuts)
+      })
     default:
       return state
   }

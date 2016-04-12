@@ -22,4 +22,22 @@ describe('reducer', () => {
 
     assert.deepEqual(result, expected)
   })
+
+  it('handles DELETE_CUT', () => {
+    const state = {
+      cuts: {
+        1: { id: 1, type: 1, name: 'ribeye', weight: 1 },
+        2: { id: 2, type: 1, name: 'skirt',  weight: 1 }
+      }
+    }
+    const expected = {
+      2: { id: 2, type: 1, name: 'skirt',  weight: 1 }
+    }
+    const result = reducer(state, {
+      type: 'DELETE_CUT',
+      id: 1,
+    }).cuts
+
+    assert.deepEqual(result, expected)
+  })
 })
