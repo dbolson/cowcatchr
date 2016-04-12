@@ -10,8 +10,14 @@ npm install
 
 ## Running
 
-### Development
+### Client-Side
 
 ```
-./node_modules/.bin/webpack-dev-server
+npm run dev
+```
+
+### Server-Side
+
+```
+npm run server
 ```
