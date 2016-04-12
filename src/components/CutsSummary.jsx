@@ -10,7 +10,7 @@ const summarizedCuts = ({ cuts, cutTypes }) => {
       id: i + 1,
       name: key,
       weight: weights[key],
-      percentage: Math.round((weights[key] / weightTotal) * 100),
+      percentage: weightPercent(weights[key], weightTotal),
     }
   })
 }
@@ -37,6 +37,16 @@ const totalWeight = (cuts) => {
   return Object.keys(cuts).reduce((acc, key) => {
     return acc += cuts[key]
   }, 0)
+}
+
+const weightPercent = (weight, total) => {
+  const percent = Math.round((weight / total) * 100)
+
+  if (isNaN(percent)) {
+    return 0
+  } else {
+    return percent
+  }
 }
 
 const CutsSummary = ({ cuts, cutTypes }) => (
