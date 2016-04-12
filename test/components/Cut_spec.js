@@ -6,7 +6,7 @@ import * as ShallowTestUtils from 'react-shallow-testutils'
 import {Cut} from '../../src/components/Cut'
 
 describe('Cut', () => {
-  it('renders', () => {
+  it('renders props', () => {
     const cut = {
       id: 1,
       type: 1,
