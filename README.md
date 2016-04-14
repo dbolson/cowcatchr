@@ -19,5 +19,5 @@ npm run dev
 ### Server-Side
 
 ```
-npm run server
+npm run start
 ```

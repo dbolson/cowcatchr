@@ -48,6 +48,10 @@ export default function(state=initialState, action) {
       return Object.assign({}, state, {
         cuts: deletedCuts(action.id, state.cuts)
       })
+    case 'RECEIVE_CUTS':
+      return Object.assign({}, state, {
+        cuts: action.cuts
+      })
     default:
       return state
   }

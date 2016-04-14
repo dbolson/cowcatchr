@@ -17,3 +17,26 @@ export function deleteCut(id) {
     id,
   }
 }
+
+export function requestCuts() {
+  return {
+    type: 'REQUEST_CUTS'
+  }
+}
+
+export function fetchCuts() {
+  return function (dispatch) {
+    dispatch(requestCuts())
+
+    return fetch('//localhost:3000/cuts')
+      .then(response => response.json())
+      .then(response => dispatch(receiveCuts(response.cuts)))
+  }
+}
+
+export function receiveCuts(cuts) {
+  return {
+    type: 'RECEIVE_CUTS',
+    cuts
+  }
+}
