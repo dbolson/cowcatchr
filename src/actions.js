@@ -30,8 +30,19 @@ export function fetchCuts() {
 
     return fetch('//localhost:3000/cuts')
       .then(response => response.json())
+      .then(response => normalizeCuts(response.cuts))
       .then(response => dispatch(receiveCuts(response.cuts)))
   }
+}
+
+export function normalizeCuts(cuts) {
+  let normalized = {}
+
+  cuts.forEach(cut => {
+    normalized[cut.id] = cut
+  })
+
+  return { cuts: normalized }
 }
 
 export function receiveCuts(cuts) {

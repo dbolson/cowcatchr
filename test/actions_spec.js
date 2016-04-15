@@ -28,3 +28,22 @@ describe('actions', () => {
     assert.deepEqual(result, expected)
   })
 })
+
+describe.only('normalize cuts', () => {
+  it('flattens data from server', () => {
+    const cuts = [
+      { id: 1, name: 'cut1' },
+      { id: 2, name: 'cut2' },
+    ]
+
+    const expected = {
+      cuts: {
+        1: { id: 1, name: 'cut1' },
+        2: { id: 2, name: 'cut2' },
+      }
+    }
+    const result = actions.normalizeCuts(cuts)
+
+    assert.deepEqual(result, expected)
+  })
+})

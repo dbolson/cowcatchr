@@ -8,6 +8,10 @@ Organize cuts of beef for cow sharing.
 npm install
 ```
 
+## API
+
+* `GET /cuts`
+
 ## Running
 
 ### Client-Side
