@@ -29,7 +29,7 @@ describe('actions', () => {
   })
 })
 
-describe.only('normalize cuts', () => {
+describe('normalize cuts', () => {
   it('flattens data from server', () => {
     const cuts = [
       { id: 1, name: 'cut1' },
